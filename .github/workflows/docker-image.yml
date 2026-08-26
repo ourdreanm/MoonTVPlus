@@ -145,7 +145,7 @@ jobs:
         uses: dataaxiom/ghcr-cleanup-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          owner: ${{ steps.lowercase.outputs.owner }}
+          owner: ${{ github.repository_owner }}
           package: moontvplus
           delete-untagged: true
           validate: true
