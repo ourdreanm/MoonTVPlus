@@ -7877,6 +7877,15 @@ function PlayPageClient() {
                 maxBufferLength: bufferConfig.maxBufferLength, // 前向缓冲长度
                 backBufferLength: bufferConfig.backBufferLength, // 已播放内容保留长度
                 maxBufferSize: bufferConfig.maxBufferSize, // 最大缓冲大小
+                /* 自适应码率优化：按播放器尺寸限制最高码率，移动端不拉超清流 */
+                capLevelToPlayerSize: true,
+
+                /* 初始带宽估算 2Mbps，兼顾起播速度与初始清晰度 */
+                abrEwmaDefaultEstimate: 2000000,
+
+                 /* 容忍 0.8s 内的小空洞，避免无意义的重新缓冲 */
+                maxBufferHole: 0.8,
+
 
                 /* 自定义loader */
                 loader: loaderClass as any,
